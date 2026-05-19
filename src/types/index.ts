@@ -103,7 +103,7 @@ export interface ProjectIdea {
   outcomes: string[];
   architecture: {
     components: string[];
-    dataFlow: string[];
+    dataFlow?: string[];
     diagramKey?: string;
   };
   toolStack: string[]; // tool slugs
