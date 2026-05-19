@@ -99,7 +99,8 @@ export const PROJECTS: ProjectIdea[] = [
       "Engineering, HR, and policy docs are scattered across Confluence, Notion, Drive, and Slack. Employees waste hours hunting for answers.",
     outcomes: ["One assistant to query all knowledge", "Citations to source docs", "Drift dashboards for stale content"],
     architecture: {
-      components: ["Connector workers", "Embedder", "Vector store", "Re-ranker", "Citation UI"]
+      components: ["Connector workers", "Embedder", "Vector store", "Re-ranker", "Citation UI"],
+      dataFlow: ["Source connectors", "Chunk + embed", "Vector store", "Hybrid retrieval + rerank", "Cited answer"]
     },
     toolStack: ["llamaindex", "supabase", "anythingllm", "langfuse"],
     buildPhases: [
@@ -128,7 +129,8 @@ export const PROJECTS: ProjectIdea[] = [
       "Underwriting decisions blend rules, models, and analyst judgement. A decisioning agent can pre-score, surface comps, and prepare a memo for review.",
     outcomes: ["Faster turnaround", "Consistent reasoning trail", "Better risk capture"],
     architecture: {
-      components: ["Rules engine", "Risk model", "Agent for memo drafting", "Comps retriever", "Reviewer portal"]
+      components: ["Rules engine", "Risk model", "Agent for memo drafting", "Comps retriever", "Reviewer portal"],
+      dataFlow: ["Application intake", "Rules + risk model score", "Comps retrieval", "Memo draft + critic", "Reviewer approval", "Decision + reason codes"]
     },
     toolStack: ["langgraph", "anthropic", "weaviate", "temporal", "langfuse"],
     buildPhases: [
@@ -157,7 +159,8 @@ export const PROJECTS: ProjectIdea[] = [
       "Clinicians spend 2+ hours daily on documentation. A voice agent can listen, structure SOAP notes, and propose orders for review.",
     outcomes: ["Less documentation burden", "Structured EHR-ready notes", "Order suggestions with rationale"],
     architecture: {
-      components: ["Realtime voice", "Speaker-diarization", "Note structurer", "Order suggester", "EHR connector"]
+      components: ["Realtime voice", "Speaker-diarization", "Note structurer", "Order suggester", "EHR connector"],
+      dataFlow: ["Mic capture", "ASR + diarization", "PHI scrub", "SOAP note structuring", "Order suggestions", "Clinician review", "FHIR write-back"]
     },
     toolStack: ["openai", "anthropic", "langgraph", "neo4j", "langfuse"],
     buildPhases: [
@@ -185,7 +188,8 @@ export const PROJECTS: ProjectIdea[] = [
     businessProblem: "Learn the RAG fundamentals by building a chat over your own docs.",
     outcomes: ["Hands-on with embeddings", "Practice with retrieval + LLM", "A demoable chatbot"],
     architecture: {
-      components: ["Markdown loader", "Embedder", "pgvector", "Chat UI"]
+      components: ["Markdown loader", "Embedder", "pgvector", "Chat UI"],
+      dataFlow: ["Load markdown", "Chunk + embed", "pgvector store", "Similarity search", "LLM answer with citations"]
     },
     toolStack: ["llamaindex", "supabase", "openai"],
     buildPhases: [
@@ -210,7 +214,8 @@ export const PROJECTS: ProjectIdea[] = [
     businessProblem: "Codemods and migrations across hundreds of services consume engineering quarters.",
     outcomes: ["10x faster migrations", "Consistent application of patterns", "Auditable PR trail"],
     architecture: {
-      components: ["Repo orchestrator", "Plan + patch agent", "Sandbox runner", "Reviewer UI"]
+      components: ["Repo orchestrator", "Plan + patch agent", "Sandbox runner", "Reviewer UI"],
+      dataFlow: ["Repo clone", "Plan generation", "Patch + run tests in sandbox", "PR draft", "Human review + merge"]
     },
     toolStack: ["claude-code", "openhands", "temporal", "langfuse"],
     buildPhases: [
@@ -235,7 +240,8 @@ export const PROJECTS: ProjectIdea[] = [
     businessProblem: "Detect churn risk early; draft outreach; surface usage patterns for QBRs.",
     outcomes: ["Earlier churn intervention", "Higher NRR", "Less prep time for QBRs"],
     architecture: {
-      components: ["Product event stream", "Risk scorer", "Outreach writer", "QBR builder"]
+      components: ["Product event stream", "Risk scorer", "Outreach writer", "QBR builder"],
+      dataFlow: ["Product + support events", "Risk scoring", "Account segmentation", "Outreach draft", "CSM approval", "QBR pack"]
     },
     toolStack: ["langgraph", "composio", "anthropic"],
     buildPhases: [
