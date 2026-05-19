@@ -69,8 +69,9 @@ export const PROJECTS: ProjectIdea[] = [
       "Sales reps lose hours each week to manual CRM hygiene, follow-up drafting, and call summarization. An agent copilot can do the toil while reps approve outbound communication.",
     outcomes: ["50% reduction in manual CRM updates", "Faster follow-up cycle", "Higher data quality in pipeline"],
     architecture: {
-      components: ["Lead triager", "Outreach writer", "Call summarizer", "Approval UI", "CRM connector", "Audit log"]
-    },
+  components: ["Lead triager", "Outreach writer", "Call summarizer", "Approval UI", "CRM connector", "Audit log"],
+  dataFlow: ["CRM signal", "Agent triage", "Draft recommendation", "Human approval", "CRM update", "Audit log"]
+},
     toolStack: ["langgraph", "composio", "anthropic", "supabase", "langfuse"],
     buildPhases: [
       { phase: "Connector + auth", tasks: ["OAuth to CRM", "Composio tools", "PII tagging"], durationWeeks: 2 },
